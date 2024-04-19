@@ -1,6 +1,6 @@
 <ul class="navbar-nav mr-auto">
     <li class="nav-item">
-        <a class="nav-link" href="marketing-index.html">Home</a>
+        <a class="nav-link" href="{{route('home')}}">Home</a>
     </li>
 
     <li class="nav-item dropdown">
@@ -8,15 +8,15 @@
         @if($categories->count())
         <div class="dropdown-menu">
             @foreach($categories as $category)
-            <a class="dropdown-item" href="#">{{$category->title}}</a>
+            <a class="dropdown-item" href="{{ route('category.show', ['slug' => $category->slug]) }}">{{$category->title}}</a>
             @endforeach
         </div>
         @endif
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="marketing-category.html">Articles</a>
+        <a class="nav-link" href="#">Articles</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="marketing-blog.html">Contact Us</a>
+        <a class="nav-link" href="#">Contact Us</a>
     </li>
 </ul>

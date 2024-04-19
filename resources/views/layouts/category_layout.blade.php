@@ -42,15 +42,17 @@
         </div><!-- end container-fluid -->
     </header><!-- end market-header -->
 
+    @yield('category_title')
+
     @yield('header')
 
-    <section class="section lb @if(!\Illuminate\Support\Facades\Request::is('/'))m3rem @endif">
+    <section class="section lb">
         <div class="container">
             <div class="row">
 
-                @yield('content')
-
                 @include('layouts.sidebar')
+
+                @yield('content')
 
             </div><!-- end row -->
         </div><!-- end container -->
