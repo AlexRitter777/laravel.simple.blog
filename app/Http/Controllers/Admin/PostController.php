@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Front\Controller;
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
@@ -53,7 +54,7 @@ class PostController extends Controller
 
         $post->tags()->sync($request->tags);
 
-
+        Cache::forget('menu_categories');
 
 
         return redirect(route('posts.index'))->with('success', 'Post has been created!');
@@ -101,6 +102,8 @@ class PostController extends Controller
 
         $post->update($data);
         $post->tags()->sync($request->tags);
+
+        Cache::forget('menu_categories');
 
         return redirect(route('posts.index'))->with('success', 'Post has been updated!');
 

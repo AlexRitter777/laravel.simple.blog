@@ -9,6 +9,8 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.0/dist/quill.core.css" rel="stylesheet">
+
     <link rel="stylesheet" href=" {{ asset('assets/admin/css/admin.css') }}">
     <base href="/">
 

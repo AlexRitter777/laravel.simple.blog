@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Sluggable\HasSlug;
@@ -66,5 +67,16 @@ class Post extends Model
     public function getPostDate(){
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d F, Y');
     }
+
+    /**
+     * Scope a query to SELECT LIKE.
+     */
+    public function scopeLike(Builder $query, $column, $needle) : void {
+
+        $query->where($column,'LIKE', "%{$needle}%");
+
+
+    }
+
 
 }

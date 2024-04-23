@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class HomeController extends Controller
 {
     public function index(): View {
 
-        $posts = Post::with('category')->orderBy('id', 'desc' )->paginate(2);
+
+        $posts = Post::with('category')->orderBy('id', 'desc')->paginate(2);
 
         return view('posts.index', compact('posts'));
 
@@ -25,9 +25,15 @@ class HomeController extends Controller
         $post->views += 1 ;
         $post->update();
 
-
-
         return view('posts.show', compact('post'));
+    }
+
+
+    public function showAll(): View {
+
+        $posts = Post::with('category')->orderBy('id', 'desc')->paginate(2);
+
+        return view('posts.all', compact('posts'));
     }
 
 }

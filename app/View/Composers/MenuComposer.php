@@ -3,21 +3,31 @@
 namespace App\View\Composers;
 
 use App\Models\Category;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 class MenuComposer
 {
 
-    /*public function __construct(
-        protected Category $category,
-    ) {}*/
 
     public function compose(View $view): void
     {
-        $categories = Category::all();
+
+        if(Cache::has('menu_categories')){
+
+            $menuCategories = Cache::get('menu_categories');
+
+        } else {
+
+            $menuCategories = Category::has('posts')->get();
+            Cache::put('menu_categories', $menuCategories);
+
+        }
 
 
-        $view->with('categories', $categories);
+        $view->with('categories', $menuCategories);
+
+
     }
 
 

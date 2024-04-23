@@ -38,9 +38,13 @@
                             <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"   placeholder="Post title..." >
                         </div>
 
+
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="5" placeholder="Description"></textarea>
+
+                            <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="5" placeholder="Description">
+                            </textarea>
+
                         </div>
 
                         <div class="form-group">
